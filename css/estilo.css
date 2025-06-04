@@ -1,29 +1,206 @@
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
+.body-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Styles for single-column form containers (e.g., registration page) */
+.form-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  padding: 30px;
+  width: 100%;
+  max-width: 400px; /* Suitable for single column forms */
+  margin: 20px auto; /* Ensures it's centered if body-form is not applying flex centering directly to it */
 }
-form {
-  display: inline-block;
-  text-align: left;
+
+.form-container h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 1.8em;
 }
-input {
+
+.form-container a {
   display: block;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 200px;
+  margin-top: 20px;
+  color: #555555;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
+}
+
+/* Styles for the new two-column login page */
+
+.header-logo {
+  display: block;
+  margin: 0 auto 20px auto; /* Centers the logo and adds space below (e.g., on login/cadastro forms) */
+  max-width: 150px; /* Default max-width, suitable for forms */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Specific styles for logo in the main site header (e.g., home page) */
+header .header-logo {
+  margin: 0 20px 0 0; /* Align left, add right margin, remove default bottom margin from .header-logo */
+  max-width: 250px;   /* Larger size for home page header */
+  /* display: block and height: auto are inherited */
+}
+.login-page-container {
+  display: flex;
+  width: 90%;
+  max-width: 900px; /* Max width for the two-column layout */
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures children conform to border-radius */
+  margin: 20px auto; /* Centered within body-form, provides some spacing */
+}
+
+.login-info-panel {
+  flex: 1; /* Each panel takes half the space */
+  padding: 40px;
+  background-color: #E0E0E0; /* Light gray for the info side */
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content within the panel */
+}
+
+.login-info-panel h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.login-info-panel p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  font-size: 0.95em;
+}
+
+.login-info-panel .highlight {
+  font-style: italic;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid #ffc107; /* Accent color for highlight */
+  border-radius: 0 4px 4px 0;
+}
+
+.login-form-panel {
+  flex: 1; /* Each panel takes half the space */
+  padding: 40px;
+  background-color: #fff; /* White background for the form side */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content within the panel */
+}
+
+.login-form-panel h2 {
+  margin-top: 0; /* Reset margin if needed due to flex centering */
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2em;
+}
+input[type="email"],
+input[type="password"],
+input[type="text"] /* Adicionando text para o cadastro */ {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 button {
-  padding: 5px 10px;
-}
-a {
-  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #CCCCCC;
+  color: #333333;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
   margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #AAAAAA;
+}
+.login-form-panel a {
+  display: block;
+  margin-top: 25px;
+  color: #555555;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.login-form-panel a:hover {
+  text-decoration: underline;
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+  .login-page-container {
+    flex-direction: column; /* Stack panels vertically */
+    width: 90%;
+    max-width: 450px; /* Adjust max-width for single column */
+    margin-top: 30px; /* Add some top/bottom margin on mobile */
+    margin-bottom: 30px;
+  }
+
+  .login-info-panel,
+  .login-form-panel {
+    flex-basis: auto; /* Allow panels to take their natural height */
+    width: 100%;    /* Ensure they take full width of the container */
+  }
+
+  .login-info-panel {
+    padding: 30px; /* Slightly reduce padding on smaller screens */
+    text-align: center; /* Center text in info panel on mobile */
+  }
+
+  .login-info-panel .highlight {
+    border-left-width: 0;
+    border-top: 3px solid #ffc107;
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+  }
+
+  .login-form-panel {
+    padding: 30px; /* Slightly reduce padding on smaller screens */
+  }
+
+  .login-info-panel h3 {
+    font-size: 1.6em;
+  }
+
+  .login-form-panel h2 {
+    font-size: 1.8em;
+  }
 }
 header {
-  background-color: #007bff;
-  color: white;
-  padding: 15px 30px;
+  background-color: #E0E0E0;
+  color: #333333;
+  padding: 10px 20px; /* Reduced padding for a smaller header */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,9 +212,17 @@ header {
 }
 
 .menu a {
-  color: white;
+  background-color: #084F55; /* User's primary color */
+  color: white; /* Text color for buttons */
   text-decoration: none;
   font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: #3d878c; /* User's secondary color for hover */
 }
 
 .usuario {
@@ -53,6 +238,16 @@ header {
   text-decoration: underline;
 }
 
+main h2 {
+  color: #084F55; /* User's primary color */
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
 main {
   padding: 30px;
+  max-width: 960px; /* Limita a largura do conteúdo principal */
+  margin: 20px auto; /* Centraliza o main na página */
+  background-color: #fff; /* Adiciona um fundo branco ao conteúdo principal */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }

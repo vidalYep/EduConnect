@@ -9,6 +9,7 @@
 <body>
 
 <header>
+  <img src="images/logo.png" alt="EduConnect Logo" class="header-logo">
   <div class="menu">
     <a href="#">Teste 1</a>
     <a href="#">Teste 2</a>
@@ -17,7 +18,7 @@
   <div>
     <span class="usuario">Olá, <?= htmlspecialchars($_SESSION['usuario']) ?>!</span>
     &nbsp;|&nbsp;
-    <a href="actions/logout.php" style="color: #ffc107;">Sair</a>
+    <a href="actions/logout.php" class="logout">Sair</a>
   </div>
 </header>
 
