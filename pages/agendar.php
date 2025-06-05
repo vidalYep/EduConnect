@@ -15,7 +15,10 @@ if (!$educador_id) {
 }
 
 // Buscar dados do educador
-$sql = "SELECT * FROM educadores WHERE id = $educador_id";
+$sql = "SELECT u.nome, e.* 
+        FROM educadores e
+        JOIN usuarios u ON u.id = e.usuario_id
+        WHERE e.usuario_id = $educador_id";
 $result = $conn->query($sql);
 $educador = $result->fetch_assoc();
 

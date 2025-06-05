@@ -3,19 +3,32 @@ if (!isset($_SESSION)) session_start();
 include 'includes/conexao.php';
 
 $usuario_id = $_SESSION['usuario_id'] ?? null;
-if (!$usuario_id) {
+$tipo = $_SESSION['tipo'] ?? null;
+
+if (!$usuario_id || !$tipo) {
   header("Location: index.php?tela=login");
   exit;
 }
 
-// Consulta os agendamentos do usuário
-$sql = "
-SELECT a.data, e.nome, e.materia, e.bairro, e.cidade
-FROM agendamentos a
-JOIN educadores e ON a.educador_id = e.id
-WHERE a.usuario_id = $usuario_id
-ORDER BY a.data ASC
-";
+if ($tipo === 'aluno') {
+  $sql = "
+    SELECT a.data, u.nome AS educador_nome, e.materia, e.bairro, e.cidade
+    FROM agendamentos a
+    JOIN usuarios u ON a.educador_id = u.id
+    JOIN educadores e ON u.id = e.usuario_id
+    WHERE a.aluno_id = $usuario_id
+    ORDER BY a.data ASC
+  ";
+} elseif ($tipo === 'educador') {
+  $sql = "
+    SELECT a.data, u.nome AS aluno_nome, u.email
+    FROM agendamentos a
+    JOIN usuarios u ON a.aluno_id = u.id
+    WHERE a.educador_id = $usuario_id
+    ORDER BY a.data ASC
+  ";
+}
+
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -24,40 +37,35 @@ $result = $conn->query($sql);
   <meta charset="UTF-8">
   <title>Calendário</title>
   <link rel="stylesheet" href="css/estilo.css">
-  <style>
-    .aula {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 10px;
-      background-color: #f9f9f9;
-      text-align: left;
-      width: 300px;
-      margin: 10px auto;
-    }
-    .aula h4 {
-      margin: 0 0 5px;
-    }
-  </style>
 </head>
 <body>
 
 <?php include 'includes/header.php'; ?>
 
 <main>
-  <h2>Minhas Aulas</h2>
+  <h2 style="text-align:center; margin-top: 20px;">
+    <?= ($tipo === 'aluno') ? "Minhas Aulas Agendadas" : "Aulas Marcadas com Alunos" ?>
+  </h2>
 
-  <?php if ($result->num_rows > 0): ?>
-    <?php while ($row = $result->fetch_assoc()): ?>
-      <div class="aula">
-        <h4><?= htmlspecialchars($row['nome']) ?> – <?= htmlspecialchars($row['materia']) ?></h4>
-        <p>📅 <?= date('d/m/Y H:i', strtotime($row['data'])) ?></p>
-        <p>📍 <?= htmlspecialchars($row['bairro']) ?>, <?= htmlspecialchars($row['cidade']) ?></p>
-      </div>
-    <?php endwhile; ?>
-  <?php else: ?>
-    <p>Você ainda não tem aulas agendadas.</p>
-  <?php endif; ?>
+  <div style="max-width: 600px; margin: 0 auto;">
+    <?php if ($result->num_rows > 0): ?>
+      <?php while ($row = $result->fetch_assoc()): ?>
+        <div class="aula">
+          <?php if ($tipo === 'aluno'): ?>
+            <h4><?= htmlspecialchars($row['educador_nome']) ?> – <?= htmlspecialchars($row['materia']) ?></h4>
+            <p>📅 <?= date('d/m/Y H:i', strtotime($row['data'])) ?></p>
+            <p>📍 <?= htmlspecialchars($row['bairro']) ?>, <?= htmlspecialchars($row['cidade']) ?></p>
+          <?php else: ?>
+            <h4><?= htmlspecialchars($row['aluno_nome']) ?></h4>
+            <p>📅 <?= date('d/m/Y H:i', strtotime($row['data'])) ?></p>
+            <p>📧 <?= htmlspecialchars($row['email']) ?></p>
+          <?php endif; ?>
+        </div>
+      <?php endwhile; ?>
+    <?php else: ?>
+      <p style="text-align:center;">Nenhuma aula agendada.</p>
+    <?php endif; ?>
+  </div>
 </main>
 
 </body>

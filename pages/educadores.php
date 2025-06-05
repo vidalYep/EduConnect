@@ -2,7 +2,13 @@
 if (!isset($_SESSION)) session_start();
 include 'includes/conexao.php';
 
-$sql = "SELECT * FROM educadores ORDER BY nome ASC";
+$sql = "
+SELECT u.id, u.nome, u.email, e.materia, e.bairro, e.cidade, e.avaliacao
+FROM usuarios u
+JOIN educadores e ON u.id = e.usuario_id
+WHERE u.tipo = 'educador'
+ORDER BY u.nome ASC
+";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -71,7 +77,7 @@ $result = $conn->query($sql);
     <?php if ($result->num_rows > 0): ?>
       <?php while ($row = $result->fetch_assoc()): ?>
         <div class="card">
-          <img src="<?= $row['foto'] ?>" alt="Foto de <?= htmlspecialchars($row['nome']) ?>">
+          <img src="images/educadores.png" alt="Foto de <?= htmlspecialchars($row['nome']) ?>">
           <h3><?= htmlspecialchars($row['nome']) ?></h3>
           <p><strong>Matéria:</strong> <?= htmlspecialchars($row['materia']) ?></p>
           <p><strong>Local:</strong> <?= htmlspecialchars($row['bairro']) ?>, <?= htmlspecialchars($row['cidade']) ?></p>

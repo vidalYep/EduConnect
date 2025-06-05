@@ -50,4 +50,10 @@ select * from educadores;
 select * from admins;
 select * from agendamentos;
 
+show tables;
+
+SELECT * FROM educadores WHERE usuario_id =2;
+
+
+
 
