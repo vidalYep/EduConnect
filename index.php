@@ -6,6 +6,7 @@ switch ($tela) {
   case 'cadastro':
     include 'pages/cadastro.php';
     break;
+
   case 'home':
     if (!isset($_SESSION['usuario'])) {
       header('Location: index.php?tela=login');
@@ -13,19 +14,31 @@ switch ($tela) {
     }
     include 'pages/home.php';
     break;
+
   case 'educadores':
-  if (!isset($_SESSION['usuario'])) {
-    header('Location: index.php?tela=login');
-    exit;
-  }
-  include 'pages/educadores.php';
-  break;
+    if (!isset($_SESSION['usuario'])) {
+      header('Location: index.php?tela=login');
+      exit;
+    }
+    include 'pages/educadores.php';
+    break;
+
   case 'calendario':
     include 'pages/calendario.php';
     break;
+
   case 'agendar':
     include 'pages/agendar.php';
     break;
+
+  case 'perfil':
+    if (!isset($_SESSION['usuario'])) {
+      header("Location: index.php?tela=login");
+      exit;
+    }
+    include 'pages/perfil.php';
+    break;
+
   default:
     include 'pages/login.php';
 }

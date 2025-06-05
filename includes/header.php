@@ -7,7 +7,7 @@
     <a href="index.php?tela=educadores">Educadores</a>
   </div>
   <div>
-    <span class="usuario">Olá, <?= htmlspecialchars($_SESSION['usuario'] ?? '') ?>!</span>
+    <span class="usuario">Olá, <a href="index.php?tela=perfil"><?= htmlspecialchars($_SESSION['usuario'] ?? '') ?></a>!</span>
     &nbsp;|&nbsp;
     <a href="actions/logout.php" class="logout">Sair</a>
   </div>
