@@ -8,17 +8,7 @@
 </head>
 <body>
 
-<header>
-  <img src="images/logo.png" alt="EduConnect Logo" class="header-logo">
-  <div class="menu">
-    <a href="pages/minhasAulas.php">Minhas Aulas</a>
-    <a href="pages/educadores.php">Teste 2</a>
-    <a href="#">Teste 3</a>
-  </div>
-  <div>
-    <a href="actions/logout.php" class="logout">Sair</a>
-  </div>
-</header>
+<?php include 'includes/header.php'; ?>
 
 <main>
   <h1>Olá, <?= htmlspecialchars($_SESSION['usuario']) ?>! </h1>
