@@ -10,9 +10,9 @@ if (!$usuario_id) {
 
 // Consulta os agendamentos do usuário
 $sql = "
-SELECT a.data, p.nome, p.materia, p.bairro, p.cidade
+SELECT a.data, e.nome, e.materia, e.bairro, e.cidade
 FROM agendamentos a
-JOIN professores p ON a.professor_id = p.id
+JOIN educadores e ON a.educador_id = e.id
 WHERE a.usuario_id = $usuario_id
 ORDER BY a.data ASC
 ";
