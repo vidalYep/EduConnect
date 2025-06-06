@@ -3,7 +3,7 @@ if (!isset($_SESSION)) session_start();
 include 'includes/conexao.php';
 
 $sql = "
-SELECT u.id, u.nome, u.email, e.materia, e.bairro, e.cidade, e.avaliacao
+SELECT u.id, u.nome, u.email, e.materia, e.bairro, e.cidade, e.avaliacao, e.foto
 FROM usuarios u
 JOIN educadores e ON u.id = e.usuario_id
 WHERE u.tipo = 'educador'
@@ -64,6 +64,14 @@ $result = $conn->query($sql);
     .card a.btn:hover {
       background-color: #0056b3;
     }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -77,7 +85,11 @@ $result = $conn->query($sql);
     <?php if ($result->num_rows > 0): ?>
       <?php while ($row = $result->fetch_assoc()): ?>
         <div class="card">
-          <img src="images/educadores.png" alt="Foto de <?= htmlspecialchars($row['nome']) ?>">
+          <?php
+            $foto = $row['foto'] ?? '';
+            $foto_path = (!empty($foto)) ? $foto : 'images/educadorPadrao.png';
+          ?>
+          <img src="<?= $foto_path ?>" alt="Foto de <?= htmlspecialchars($row['nome']) ?>">
           <h3><?= htmlspecialchars($row['nome']) ?></h3>
           <p><strong>Matéria:</strong> <?= htmlspecialchars($row['materia']) ?></p>
           <p><strong>Local:</strong> <?= htmlspecialchars($row['bairro']) ?>, <?= htmlspecialchars($row['cidade']) ?></p>

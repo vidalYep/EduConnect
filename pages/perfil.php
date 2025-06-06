@@ -18,9 +18,6 @@ if ($tipo === 'educador') {
   $sql_educador = "SELECT * FROM educadores WHERE usuario_id = $usuario_id";
   $educador = $conn->query($sql_educador)->fetch_assoc();
 }
-
-$tipo = $_SESSION['tipo'] ?? null;
-var_dump($tipo);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -56,7 +53,7 @@ var_dump($tipo);
 
 <div class="perfil-container">
   <h2>Meu Perfil</h2>
-  <form action="actions/atualizarPerfil.php" method="POST">
+  <form action="actions/atualizarPerfil.php" method="POST" enctype="multipart/form-data">
     <label>Tipo de Conta:</label>
     <input type="text" value="<?= htmlspecialchars($usuario['tipo']) ?>" class="readonly" disabled>
 
@@ -75,6 +72,9 @@ var_dump($tipo);
 
       <label>Cidade:</label>
       <input type="text" name="cidade" value="<?= htmlspecialchars($educador['cidade'] ?? '') ?>">
+
+      <label>Foto de Perfil:</label>
+      <input type="file" name="foto" accept="image/*">
     <?php endif; ?>
 
     <button type="submit">Atualizar Perfil</button>

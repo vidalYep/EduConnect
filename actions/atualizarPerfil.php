@@ -23,6 +23,17 @@ if ($tipo === 'educador') {
           SET materia = '$materia', bairro = '$bairro', cidade = '$cidade'
           WHERE usuario_id = $usuario_id";
   $conn->query($sql);
+
+  if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
+  $ext = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+  $nome_arquivo = 'foto_' . $usuario_id . '.' . $ext;
+  $caminho = '../images/fotosEducadores/' . $nome_arquivo;
+
+  move_uploaded_file($_FILES['foto']['tmp_name'], $caminho);
+
+  $fotoBD = 'images/fotosEducadores/' . $nome_arquivo;
+  $conn->query("UPDATE educadores SET foto = '$fotoBD' WHERE usuario_id = $usuario_id");
+}
 }
 
 // Atualiza a variavel nome depois do update
