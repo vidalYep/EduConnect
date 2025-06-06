@@ -33,6 +33,15 @@ $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <style>
+  .aula {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+</style>
 <head>
   <meta charset="UTF-8">
   <title>Calendário</title>

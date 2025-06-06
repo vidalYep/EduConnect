@@ -82,13 +82,21 @@ $horarios_disponiveis = [
 <?php include 'includes/header.php'; ?>
 
 <div class="agendar-container">
-  <img src="<?= $educador['foto'] ?>" alt="Foto de <?= htmlspecialchars($educador['nome']) ?>">
+  <?php
+    $foto = $educador['foto'] ?? '';
+    $foto_path = (!empty($foto)) ? $foto : 'images/educadorPadrao.png';
+  ?>
+    <img src="<?= $foto_path ?>" alt="Foto de <?= htmlspecialchars($educador['nome']) ?>">
+
   <h3><?= htmlspecialchars($educador['nome']) ?></h3>
   <p><strong>Matéria:</strong> <?= htmlspecialchars($educador['materia']) ?></p>
   <p><strong>Local:</strong> <?= htmlspecialchars($educador['bairro']) ?>, <?= htmlspecialchars($educador['cidade']) ?></p>
 
   <form action="actions/agendar.php" method="POST">
-    <input type="hidden" name="educador_id" value="<?= $educador['id'] ?>">
+
+  
+    <input type="hidden" name="educador_id" value="<?= $educador_id ?>">
+
 
     <label for="horario">Escolha um horário:</label>
     <select name="horario" id="horario" required>

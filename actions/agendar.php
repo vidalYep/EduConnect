@@ -11,10 +11,10 @@ if (!$usuario_id || !$educador_id || !$data) {
   exit;
 }
 
-// Verificar se já existe um agendamento nesse horário
+// Verificar se já existe um agendamento nesse horário para o aluno
 $verificar = "
 SELECT * FROM agendamentos
-WHERE usuario_id = $usuario_id
+WHERE aluno_id = $usuario_id
 AND data = '$data'
 ";
 $res = $conn->query($verificar);
@@ -25,7 +25,7 @@ if ($res->num_rows > 0) {
 
 // Inserir novo agendamento
 $sql = "
-INSERT INTO agendamentos (usuario_id, educador_id, data)
+INSERT INTO agendamentos (aluno_id, educador_id, data)
 VALUES ($usuario_id, $educador_id, '$data')
 ";
 if ($conn->query($sql)) {
