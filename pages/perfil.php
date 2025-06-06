@@ -24,7 +24,7 @@ if ($tipo === 'educador') {
 <head>
   <meta charset="UTF-8">
   <title>Perfil</title>
-  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/estilo.css?v=<?= time() ?>">
   <style>
     .perfil-container {
       max-width: 500px;
