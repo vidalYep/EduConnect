@@ -59,3 +59,51 @@ textarea:focus,
 #chat-input, .chat-messages, .message-text {
     color: white !important;
 }
+
+/* CORREÇÃO PARA RESPOSTAS DO BOT NO MODO NORMAL */
+.message-content {
+    color: #333333 !important;
+    background-color: #f0f0f0 !important;
+}
+
+/* Garantir que as mensagens do bot sejam visíveis no modo normal */
+[data-theme="light"] .message-content,
+.message-content {
+    color: #333333 !important;
+}
+
+/* Garantir que o texto da mensagem seja visível */
+.message-text {
+    color: #333333 !important;
+}
+
+/* Garantir que as mensagens enviadas pelo usuário sejam visíveis */
+.chat-message.sent .message-content {
+    color: white !important;
+    background-color: #2563eb !important;
+}
+
+.chat-message.sent .message-text {
+    color: white !important;
+}
+
+/* Garantir que o autor da mensagem seja visível */
+.message-author {
+    color: #333333 !important;
+    font-weight: 600 !important;
+}
+
+.chat-message.sent .message-author {
+    color: white !important;
+}
+
+/* Garantir que o texto da mensagem seja visível no modo escuro */
+[data-theme="dark"] .message-content {
+    color: white !important;
+    background-color: #333333 !important;
+}
+
+/* Garantir que o autor da mensagem seja visível no modo escuro */
+[data-theme="dark"] .message-author {
+    color: white !important;
+}

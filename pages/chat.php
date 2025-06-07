@@ -100,6 +100,32 @@ require_once __DIR__ . "/../includes/conexao.php";
     .chat-input-container {
         background-color: transparent !important;
     }
+    
+    /* Correção para mensagens do bot */
+    .message-content {
+        background-color: #f0f0f0 !important;
+    }
+    
+    .message-text {
+        color: #333333 !important;
+    }
+    
+    .chat-message.sent .message-content {
+        background-color: #2563eb !important;
+    }
+    
+    .chat-message.sent .message-text {
+        color: white !important;
+    }
+    
+    .message-author {
+        color: #333333 !important;
+        font-weight: bold !important;
+    }
+    
+    .chat-message.sent .message-author {
+        color: white !important;
+    }
 </style>
 
 <script>
