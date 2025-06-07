@@ -90,3 +90,65 @@
 [data-theme="dark"] .btn-primary:hover {
   background-color: var(--primary-light);
 }
+
+/* Botão de alternância de tema embutido no header */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+  transition: background-color 0.2s ease;
+  position: relative; /* <-- importante para manter dentro do fluxo */
+  z-index: 1;
+}
+
+
+.theme-toggle:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle:hover i {
+  transform: rotate(15deg);
+}
+
+[data-theme="dark"] .theme-toggle i.fa-sun {
+  color: var(--accent-color);
+}
+
+[data-theme="light"] .theme-toggle i.fa-moon {
+  color: var(--primary-dark);
+}
+
+/* Área do usuário com os botões organizados */
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  overflow-x: visible;
+  max-width: 100%;
+}
+
+.logout-link {
+  margin-left: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
