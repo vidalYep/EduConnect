@@ -7,7 +7,8 @@ CREATE TABLE usuarios (
   nome VARCHAR(100) NOT NULL,
   email VARCHAR(100) UNIQUE NOT NULL,
   senha VARCHAR(255) NOT NULL,
-  tipo ENUM('aluno', 'educador', 'admin')  NOT NULL
+  tipo ENUM('aluno', 'educador', 'admin')  NOT NULL,
+  educoins INT NOT NULL DEFAULT 0
 );
 
 -- Detalhes dos alunos
@@ -26,7 +27,7 @@ CREATE TABLE educadores (
   foto VARCHAR(255),
   -- novo
   valor_hora DECIMAL(10,2) NOT NULL DEFAULT 0.00,
-  experiencia TEXT,
+  descricao TEXT,
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 

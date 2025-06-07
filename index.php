@@ -2,8 +2,19 @@
 session_start();
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
+require_once 'includes/conexao.php'; // necessário para consulta ao banco
 
 $tela = $_GET['tela'] ?? 'login';
+
+// Atualiza o saldo de educoins se estiver logado
+if (isset($_SESSION['usuario_id'])) {
+  $usuarioId = $_SESSION['usuario_id'];
+  $sql = "SELECT educoins FROM usuarios WHERE id = $usuarioId";
+  $result = $conn->query($sql);
+  if ($result && $row = $result->fetch_assoc()) {
+    $_SESSION['educoins'] = $row['educoins'];
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

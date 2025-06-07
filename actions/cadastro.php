@@ -16,11 +16,12 @@ if ($conn->query($sql)) {
   // Cadastro específico por tipo
   if ($tipo === 'educador') {
     $materia = $_POST['materia'] ?? '';
-    $bairro = $_POST['bairro'] ?? '';
-    $cidade = $_POST['cidade'] ?? '';
+$bairro = $_POST['bairro'] ?? '';
+$cidade = $_POST['cidade'] ?? '';
+$valor_hora = 100;
 
-    $sql_educador = "INSERT INTO educadores (usuario_id, materia, bairro, cidade, avaliacao)
-                     VALUES ($usuario_id, '$materia', '$bairro', '$cidade', 0)";
+$sql_educador = "INSERT INTO educadores (usuario_id, materia, bairro, cidade, avaliacao, valor_hora)
+                 VALUES ($usuario_id, '$materia', '$bairro', '$cidade', 0, $valor_hora)";
     $conn->query($sql_educador);
   } elseif ($tipo === 'aluno') {
     $sql_aluno = "INSERT INTO alunos (usuario_id) VALUES ($usuario_id)";
