@@ -1,5 +1,5 @@
 :root {
-  /* Paleta de cores principal - mais moderna e vibrante */
+  /* Paleta de cores principal - moderna e vibrante */
   --primary-color: #084F55;
   --primary-light: #3d878c;
   --primary-dark: #053438;
@@ -7,9 +7,9 @@
   --secondary-color: #FF6B6B;
   --secondary-light: #FF8E8E;
   --secondary-rgb: 255, 107, 107;
-  --accent-color: #4CAF50;
-  --accent-rgb: 76, 175, 80;
-  
+  --accent-color: #3BB2D0;
+  --accent-rgb: 59, 178, 208;
+
   /* Cores neutras - com melhor contraste */
   --bg-color: #F8FAFC;
   --card-bg: #FFFFFF;
@@ -17,8 +17,8 @@
   --text-secondary: #333333;
   --text-light: #64748B;
   --border-color: #E2E8F0;
-  
-  /* Cores de feedback - mais vibrantes */
+
+  /* Cores de feedback */
   --success: #10B981;
   --success-rgb: 16, 185, 129;
   --warning: #F59E0B;
@@ -27,23 +27,23 @@
   --error-rgb: 239, 68, 68;
   --info: #3B82F6;
   --info-rgb: 59, 130, 246;
-  
-  /* Sombras - mais suaves e modernas */
+
+  /* Sombras */
   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
-  
-  /* Arredondamento - mais moderno */
+
+  /* Arredondamento */
   --border-radius-sm: 6px;
   --border-radius-md: 12px;
   --border-radius-lg: 16px;
   --border-radius-xl: 24px;
-  
-  /* Transições - mais suaves */
+
+  /* Transições */
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   /* Gradientes */
   --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-light));
   --gradient-secondary: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));

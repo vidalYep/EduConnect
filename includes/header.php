@@ -8,13 +8,9 @@
 
 <!-- Estilos -->
 <link rel="stylesheet" href="<?= $base_url ?>/css/estilo.css?v=<?= time() ?>">
-<link rel="stylesheet" href="<?= $base_url ?>/css/dark-theme.css?v=<?= time() ?>">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-<!-- Scripts -->
-<script src="<?= $base_url ?>/js/theme.js" defer></script>
 
 <nav class="navbar">
   <div class="nav-container">

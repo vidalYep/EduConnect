@@ -24,6 +24,9 @@ CREATE TABLE educadores (
   cidade VARCHAR(100),
   avaliacao DECIMAL(2,1),
   foto VARCHAR(255),
+  -- novo
+  valor_hora DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+  experiencia TEXT,
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
@@ -53,7 +56,6 @@ select * from agendamentos;
 show tables;
 
 SELECT * FROM agendamentos;
-
 
 
 
