@@ -12,6 +12,13 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+<!-- CSS de tema e toggle -->
+<link rel="stylesheet" href="<?= $base_url ?>/css/theme-toggle.css?v=<?= time() ?>">
+<link rel="stylesheet" href="<?= $base_url ?>/css/background.css?v=<?= time() ?>">
+<link rel="stylesheet" href="<?= $base_url ?>/css/theme.css?v=<?= time() ?>">
+<link rel="stylesheet" href="<?= $base_url ?>/css/dark-theme.css?v=<?= time() ?>">
+<link rel="stylesheet" href="<?= $base_url ?>/css/chat-fix-dark.css?v=<?= time() ?>">
+
 <nav class="navbar">
   <div class="nav-container">
     <a href="<?= $base_url ?>/index.php" class="nav-logo">
@@ -52,6 +59,9 @@
           <i class="fas fa-user-circle"></i>
           <a href="<?= $base_url ?>/index.php?tela=perfil"><?= htmlspecialchars($_SESSION['usuario'] ?? '') ?></a>
         </span>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alterar tema">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
         <a href="<?= $base_url ?>/actions/logout.php" class="nav-logout">
           <i class="fas fa-sign-out-alt"></i>
           <span>Sair</span>
@@ -65,5 +75,39 @@
   document.querySelector('.nav-toggle').addEventListener('click', function() {
     document.querySelector('.nav-menu').classList.toggle('active');
     this.classList.toggle('active');
+  });
+  
+  // Funcionalidade de alternância de tema
+  document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    
+    // Verificar tema atual no localStorage
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Atualizar ícone baseado no tema atual
+    if (currentTheme === 'dark') {
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    } else {
+      themeIcon.classList.replace('fa-sun', 'fa-moon');
+    }
+    
+    // Função para alternar o tema
+    themeToggle.addEventListener('click', function() {
+      let theme = document.documentElement.getAttribute('data-theme');
+      let newTheme = theme === 'light' ? 'dark' : 'light';
+      
+      // Atualizar o tema
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Atualizar o ícone
+      if (newTheme === 'dark') {
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+      }
+    });
   });
 </script>
