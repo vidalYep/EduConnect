@@ -1,6 +1,17 @@
 <?php
-if (!isset($_SESSION)) session_start();
-include 'includes/conexao.php';
+// Iniciando a sessão se ainda não estiver iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verificando se o usuário está logado
+if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['tipo'])) {
+    header("Location: ../index.php?tela=login");
+    exit;
+}
+
+// Incluindo o arquivo de conexão
+require_once(__DIR__ . '/../includes/conexao.php');
 
 // Configuração de localização para português
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
@@ -93,12 +104,12 @@ if ($result && $result->num_rows > 0) {
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
-  <link rel="stylesheet" href="css/estilo.css?v=<?= time() ?>">
+  <link rel="stylesheet" href="../css/estilo.css?v=<?= time() ?>">
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 </head>
 <body>
 
-<?php include 'includes/header.php'; ?>
+<?php require_once(__DIR__ . '/../includes/header.php'); ?>
 
 <main class="container">
   <div class="page-header">
