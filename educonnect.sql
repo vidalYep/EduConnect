@@ -52,7 +52,9 @@ select * from agendamentos;
 
 show tables;
 
-SELECT * FROM educadores WHERE usuario_id =2;
+SELECT * FROM agendamentos;
+
+
 
 
 

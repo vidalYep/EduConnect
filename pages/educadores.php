@@ -16,8 +16,8 @@ $result = $conn->query($sql);
 <head>
   <meta charset="UTF-8">
   <title>Educadores</title>
-  <link rel="stylesheet" href="css/estilo.css?v=<?= time() ?>">
-  <link rel="stylesheet" href="css/critical-fixes.css?v=<?= time() ?>">
+  <link rel="stylesheet" href="./css/estilo.css?v=<?= time() ?>">
+  <link rel="stylesheet" href="./css/critical-fixes.css?v=<?= time() ?>">
 </head>
 <body>
 

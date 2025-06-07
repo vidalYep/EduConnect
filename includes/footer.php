@@ -1,6 +1,6 @@
-<?php
-// Arquivo footer.php
-?>
+<?php if (!isset($_SESSION)) session_start(); ?>
+<?php require_once __DIR__ . "/config.php"; ?>
+
 <footer>
   <div class="footer-content">
     <div class="footer-section">
@@ -30,6 +30,3 @@
     <p>&copy; <?= date('Y') ?> EduConnect. Todos os direitos reservados.</p>
   </div>
 </footer>
-
-<!-- Font Awesome para ícones -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
