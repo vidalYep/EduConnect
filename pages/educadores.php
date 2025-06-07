@@ -32,7 +32,7 @@ $result = $conn->query($sql);
         <div class="educador-card">
           <?php
             $foto = $row['foto'] ?? '';
-            $foto_path = (!empty($foto)) ? $foto : 'images/default-profile.jpg';
+            $foto_path = (!empty($foto)) ? $foto : 'images/educadorPadrao.png';
           ?>
           <img src="<?= $foto_path ?>" alt="Foto de <?= htmlspecialchars($row['nome']) ?>">
           <h3><?= htmlspecialchars($row['nome']) ?></h3>

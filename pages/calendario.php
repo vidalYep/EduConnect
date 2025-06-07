@@ -199,6 +199,6 @@ if ($result && $result->num_rows > 0) {
     calendar.render();
   });
 </script>
-
+<?php include dirname(__DIR__) . "/includes/footer.php"; ?>
 </body>
 </html>

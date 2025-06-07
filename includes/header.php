@@ -56,24 +56,40 @@
           <i class="fas fa-calendar-alt"></i>
           <span>Calendário</span>
         </a>
-      </div>
 
-      <div class="nav-user" style="display:flex; flex-wrap:nowrap; gap:5px;">
-        <!-- Simplificado para garantir que o nome seja exibido completamente -->
-        <a href="<?= $base_url ?>/index.php?tela=perfil" style="overflow:visible; white-space:nowrap; flex:0 1 auto;" title="<?= htmlspecialchars($_SESSION['usuario'] ?? '') ?>">
-          <i class="fas fa-user-circle" style="margin-right:3px;"></i>
-          <span style="font-weight:600; color:var(--primary-color);"><?= htmlspecialchars($_SESSION['usuario'] ?? '') ?></span>
-        </a>
-        
-        <button id="theme-toggle" class="theme-toggle" aria-label="Alterar tema">
-          <i class="fas fa-sun" id="theme-icon-sun"></i>
-          <i class="fas fa-moon" id="theme-icon-moon"></i>
-        </button>
-        
-        <a href="<?= $base_url ?>/actions/logout.php" style="min-width:auto;" title="Sair">
-          <i class="fas fa-sign-out-alt"></i>
-        </a>
-      </div>
+      <div class="nav-user" style="display: flex; align-items: center; gap: 1.5rem;">
+
+  <!-- Saldo de EduCoins -->
+<div class="nav-item-divider">
+  <div class="educoins-saldo">
+    <i class="fas fa-coins" style="color: #FFD700;"></i>
+    <span>
+      <?= $_SESSION['educoins'] ?? 0 ?> 
+      <a href="<?= $base_url ?>/pages/comprar-educoins.php" class="educoins-link">eduCoins</a>
+    </span>
+  </div>
+</div>
+
+  <!-- Perfil -->
+  <div class="nav-item-divider">
+    <a href="<?= $base_url ?>/index.php?tela=perfil" class="nav-user-link" title="<?= htmlspecialchars($_SESSION['usuario'] ?? '') ?>">
+      <i class="fas fa-user-circle"></i>
+      <span><?= htmlspecialchars($_SESSION['usuario'] ?? '') ?></span>
+    </a>
+  </div>
+
+  <!-- Alternar Tema -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Alterar tema">
+    <i class="fas fa-sun" id="theme-icon-sun"></i>
+    <i class="fas fa-moon" id="theme-icon-moon"></i>
+  </button>
+
+  <!-- Sair -->
+  <a href="<?= $base_url ?>/actions/logout.php" class="logout-link" title="Sair">
+    <i class="fas fa-sign-out-alt"></i>
+  </a>
+</div>
+
     </div>
   </div>
 </nav>

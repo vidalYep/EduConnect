@@ -216,7 +216,7 @@ if (isset($_SESSION['mensagem_sucesso'])) {
     </div>
     <?php elseif ($tipo === 'educador'): ?>
     <div class="foto-perfil">
-      <img src="images/default-profile.png" alt="Foto de perfil" class="foto-preview" id="foto-preview">
+      <img src="images/educadorPadrao.png" alt="Foto de perfil" class="foto-preview" id="foto-preview">
       <div class="foto-upload">
         <label for="foto-input"><i class='bx bx-camera'></i> Adicionar foto</label>
         <input type="file" name="foto" id="foto-input" accept="image/*" onchange="previewFoto(this)">
