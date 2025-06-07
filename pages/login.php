@@ -10,30 +10,9 @@
   <link rel="stylesheet" href="../css/critical-fixes.css?v=<?= time() ?>">
   <link rel="stylesheet" href="css/theme.css?v=<?= time() ?>">
   <link rel="stylesheet" href="css/background.css?v=<?= time() ?>">
-  <script>
-    // Check for saved theme preference, otherwise use system preference
-    const getPreferredTheme = () => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        return savedTheme;
-      }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    };
-
-    // Apply the theme
-    const setTheme = (theme) => {
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-    };
-
-    // Initial theme setup
-    setTheme(getPreferredTheme());
-  </script>
+ 
 </head>
 <body class="body-form">
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema claro/escuro">
-    <i class="ri-sun-line" id="themeIcon"></i>
-  </button>
 
   <div class="login-page-container">
     <div class="login-info-panel">
