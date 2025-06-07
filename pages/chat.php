@@ -12,6 +12,8 @@ require_once __DIR__ . "/../includes/conexao.php";
     <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="../css/dark-theme.css">
     <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/chat-fix.css">
+    <link rel="stylesheet" href="../css/critical-fixes.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -72,7 +74,35 @@ require_once __DIR__ . "/../includes/conexao.php";
         </button>
     </main>
 
-    <script>
+    <style>
+    /* Estilos diretos para o campo de mensagem */
+    #chat-input {
+        background-color: #333333 !important;
+        border: 2px solid #5c5c5c !important;
+        color: white !important;
+        padding: 12px 15px !important;
+        font-size: 15px !important;
+        border-radius: 8px !important;
+    }
+    
+    #chat-input:focus {
+        border-color: #00E6F0 !important;
+        background-color: #404040 !important;
+        box-shadow: 0 0 0 2px rgba(0, 230, 240, 0.3) !important;
+        outline: none !important;
+    }
+    
+    #chat-input::placeholder {
+        color: #DDDDDD !important;
+        opacity: 1 !important;
+    }
+    
+    .chat-input-container {
+        background-color: transparent !important;
+    }
+</style>
+
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');

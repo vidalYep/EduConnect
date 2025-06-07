@@ -11,6 +11,7 @@ if (!$usuario_id) {
 }
 
 $nome = $_POST['nome'] ?? '';
+$nome = $conn->real_escape_string($nome);
 
 $conn->query("UPDATE usuarios SET nome = '$nome' WHERE id = $usuario_id");
 
@@ -18,9 +19,16 @@ if ($tipo === 'educador') {
   $materia = $_POST['materia'] ?? '';
   $bairro = $_POST['bairro'] ?? '';
   $cidade = $_POST['cidade'] ?? '';
+  $descricao = $_POST['descricao'] ?? '';
+  
+  // Escapando os dados para prevenir SQL injection
+  $materia = $conn->real_escape_string($materia);
+  $bairro = $conn->real_escape_string($bairro);
+  $cidade = $conn->real_escape_string($cidade);
+  $descricao = $conn->real_escape_string($descricao);
 
   $sql = "UPDATE educadores 
-          SET materia = '$materia', bairro = '$bairro', cidade = '$cidade'
+          SET materia = '$materia', bairro = '$bairro', cidade = '$cidade', descricao = '$descricao'
           WHERE usuario_id = $usuario_id";
   $conn->query($sql);
 
@@ -38,6 +46,11 @@ if ($tipo === 'educador') {
 
 // Atualiza a variavel nome depois do update
 $conn->query("UPDATE usuarios SET nome = '$nome' WHERE id = $usuario_id");
-$_SESSION['usuario'] = $nome; 
+$_SESSION['usuario'] = $nome;
 
-echo "<script>alert('Perfil atualizado com sucesso!'); window.location='../index.php?tela=perfil';</script>";
+// Definir mensagem de sucesso na sessão em vez de usar alert
+$_SESSION['mensagem_sucesso'] = 'Perfil atualizado com sucesso!';
+
+// Redirecionar para a página de perfil
+header("Location: ../index.php?tela=perfil");
+exit;

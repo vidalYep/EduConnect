@@ -31,6 +31,7 @@ if ($usuario_id && $tipo) {
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="css/estilo.css?v=<?= time() ?>">
+  <link rel="stylesheet" href="css/critical-fixes.css?v=<?= time() ?>">
 </head>
 <body>
 
