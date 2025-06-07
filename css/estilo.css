@@ -66,6 +66,7 @@ body {
   line-height: 1.6;
   font-size: 16px;
   letter-spacing: -0.01em;
+  overflow-x: auto !important; /* Added for diagnostics */
 }
 
 /* Tipografia moderna */
@@ -502,8 +503,10 @@ button:active {
 .nav-user {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  padding-left: 1.5rem;
+  gap: 1rem;
+  padding-left: 1rem;
+  flex-wrap: nowrap;
+  min-width: 0;
   border-left: 1px solid var(--border-color);
 }
 

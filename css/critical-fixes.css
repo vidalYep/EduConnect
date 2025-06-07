@@ -107,3 +107,95 @@ textarea:focus,
 [data-theme="dark"] .message-author {
     color: white !important;
 }
+
+/* Correção para evitar corte de conteúdo em telas menores */
+html, body {
+    overflow-x: visible !important;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+main.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+.welcome-section {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.welcome-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dashboard-card {
+    flex: 1 1 300px;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Media query para dispositivos menores */
+@media (max-width: 768px) {
+    .dashboard-cards {
+        flex-direction: column;
+    }
+
+    .dashboard-card {
+        flex-basis: 100%;
+    }
+}
+
+/* Correção específica para o nome de usuário */
+.user-greeting {
+    white-space: nowrap;
+    overflow: visible;
+    max-width: none;
+    margin-right: 10px;
+}
+
+.welcome-header h1 {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+/* Ajustes de espaçamento na barra de navegação */
+.nav-user {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0 10px;
+}
+
+/* Garantir que os links da barra de navegação não sejam cortados */
+.nav-links {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+/* Ajuste do título nas páginas - correção definitiva */
+h1, .welcome-header h1 {
+    white-space: normal !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    font-size: 1.8rem !important;
+    line-height: 1.2 !important;
+    word-break: break-word !important;
+}

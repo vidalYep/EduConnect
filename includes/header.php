@@ -18,6 +18,10 @@
 <link rel="stylesheet" href="<?= $base_url ?>/css/theme.css?v=<?= time() ?>">
 <link rel="stylesheet" href="<?= $base_url ?>/css/dark-theme.css?v=<?= time() ?>">
 <link rel="stylesheet" href="<?= $base_url ?>/css/chat-fix-dark.css?v=<?= time() ?>">
+<link rel="stylesheet" href="<?= $base_url ?>/css/nome-fix.css?v=<?= time() ?>">
+<link rel="stylesheet" href="<?= $base_url ?>/css/layout-fix.css?v=<?= time() ?>">
+<link rel="stylesheet" href="<?= $base_url ?>/css/contrast-fix.css?v=<?= time() ?>">
+<link rel="stylesheet" href="<?= $base_url ?>/css/header-fix.css?v=<?= time() ?>">
 
 <nav class="navbar">
   <div class="nav-container">
@@ -54,17 +58,20 @@
         </a>
       </div>
 
-      <div class="nav-user">
-        <span class="user-greeting">
-          <i class="fas fa-user-circle"></i>
-          <a href="<?= $base_url ?>/index.php?tela=perfil"><?= htmlspecialchars($_SESSION['usuario'] ?? '') ?></a>
-        </span>
+      <div class="nav-user" style="display:flex; flex-wrap:nowrap; gap:5px;">
+        <!-- Simplificado para garantir que o nome seja exibido completamente -->
+        <a href="<?= $base_url ?>/index.php?tela=perfil" style="overflow:visible; white-space:nowrap; flex:0 1 auto;" title="<?= htmlspecialchars($_SESSION['usuario'] ?? '') ?>">
+          <i class="fas fa-user-circle" style="margin-right:3px;"></i>
+          <span style="font-weight:600; color:var(--primary-color);"><?= htmlspecialchars($_SESSION['usuario'] ?? '') ?></span>
+        </a>
+        
         <button id="theme-toggle" class="theme-toggle" aria-label="Alterar tema">
-          <i class="fas fa-moon" id="theme-icon"></i>
+          <i class="fas fa-sun" id="theme-icon-sun"></i>
+          <i class="fas fa-moon" id="theme-icon-moon"></i>
         </button>
-        <a href="<?= $base_url ?>/actions/logout.php" class="nav-logout">
+        
+        <a href="<?= $base_url ?>/actions/logout.php" style="min-width:auto;" title="Sair">
           <i class="fas fa-sign-out-alt"></i>
-          <span>Sair</span>
         </a>
       </div>
     </div>
@@ -80,17 +87,20 @@
   // Funcionalidade de alternância de tema
   document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
+    const sunIcon = document.getElementById('theme-icon-sun');
+    const moonIcon = document.getElementById('theme-icon-moon');
     
     // Verificar tema atual no localStorage
     const currentTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', currentTheme);
     
-    // Atualizar ícone baseado no tema atual
+    // Configurar visibilidade inicial dos ícones
     if (currentTheme === 'dark') {
-      themeIcon.classList.replace('fa-moon', 'fa-sun');
+      sunIcon.style.display = 'inline-block';
+      moonIcon.style.display = 'none';
     } else {
-      themeIcon.classList.replace('fa-sun', 'fa-moon');
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'inline-block';
     }
     
     // Função para alternar o tema
@@ -102,11 +112,13 @@
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       
-      // Atualizar o ícone
+      // Atualizar os ícones
       if (newTheme === 'dark') {
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
+        sunIcon.style.display = 'inline-block';
+        moonIcon.style.display = 'none';
       } else {
-        themeIcon.classList.replace('fa-sun', 'fa-moon');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'inline-block';
       }
     });
   });

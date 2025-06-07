@@ -39,9 +39,13 @@ if ($usuario_id && $tipo) {
 
 <main class="container">
   <div class="welcome-section">
-    <div class="welcome-header">
-      <h1>Olá, <?= htmlspecialchars($_SESSION['usuario']) ?>!</h1>
-      <p class="welcome-subtitle">Bem-vindo à sua área pessoal no EduConnect</p>
+    <!-- Estrutura totalmente modificada para resolver o problema de corte do nome -->
+    <div style="width:100%; overflow:visible; margin-bottom:20px;">
+      <div style="display:inline-block; width:auto;">
+        <h1 style="font-size:1.5rem; margin-bottom:5px; display:inline-block;">Olá,</h1>
+        <h1 style="font-size:1.5rem; margin-bottom:5px; display:block; word-break:break-all; overflow-wrap:break-word; color:#084F55;"><?= htmlspecialchars($_SESSION['usuario']) ?>!</h1>
+      </div>
+      <p style="margin-top:5px;">Bem-vindo à sua área pessoal no EduConnect</p>
     </div>
     <div class="welcome-card">
       <div class="welcome-icon">
