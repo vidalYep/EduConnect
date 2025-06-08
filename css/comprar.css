@@ -1,18 +1,18 @@
 body {
   font-family: 'Inter', sans-serif;
-  background: #f5f7fa;
+  background: var(--bg-color);
   margin: 0;
   padding: 2rem;
-  color: #333;
+  color: var(--text-color);
 }
 
 .comprar-container {
   max-width: 800px;
   margin: auto;
-  background: #fff;
+  background: var(--card-bg);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-sm);
   text-align: center;
 }
 
@@ -33,10 +33,10 @@ body {
 }
 
 .pacote-card {
-  border: 2px solid #E2E8F0;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
   padding: 1rem;
-  background: #fff;
+  background: var(--card-bg);
   text-align: center;
   transition: all 0.2s ease;
 }
@@ -49,26 +49,28 @@ body {
 .pacote-card h2 {
   margin: 0;
   font-size: 1.5rem;
-  color: #084F55;
+  color: var(--text-color);
 }
 
 .pacote-card p {
   margin: 0.5rem 0 1rem;
   font-size: 1.1rem;
-  color: #444;
+  color: var(--text-secondary);
 }
 
 .pacote-card button {
   padding: 0.5rem 1rem;
-  background: #084F55;
-  color: white;
+  background: var(--primary-color);
+  color: var(--button-text);
   border: none;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .pacote-card button:hover {
-  background: #0a6d75;
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }

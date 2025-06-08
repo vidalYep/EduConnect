@@ -123,11 +123,11 @@ $usuario_logado = isset($_SESSION['usuario']);
     document.documentElement.setAttribute('data-theme', currentTheme);
 
     if (currentTheme === 'dark') {
-      sunIcon.style.display = 'inline-block';
-      moonIcon.style.display = 'none';
-    } else {
       sunIcon.style.display = 'none';
       moonIcon.style.display = 'inline-block';
+    } else {
+      sunIcon.style.display = 'inline-block';
+      moonIcon.style.display = 'none';
     }
 
     themeToggle?.addEventListener('click', function () {
@@ -138,11 +138,11 @@ $usuario_logado = isset($_SESSION['usuario']);
       localStorage.setItem('theme', newTheme);
 
       if (newTheme === 'dark') {
-        sunIcon.style.display = 'inline-block';
-        moonIcon.style.display = 'none';
-      } else {
         sunIcon.style.display = 'none';
         moonIcon.style.display = 'inline-block';
+      } else {
+        sunIcon.style.display = 'inline-block';
+        moonIcon.style.display = 'none';
       }
     });
   });
